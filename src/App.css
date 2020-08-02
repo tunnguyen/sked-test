@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .app__container {
   display: flex;
   height: 100%;
@@ -44,15 +48,55 @@
 }
 
 .app__content-blank {
-  height: calc(100vh - 92px)
+  position: relative;
+  overflow: hidden;
+}
+
+.section__group {
+  height: 100%;
 }
 
 .section__panel {
-  padding-bottom: 15px;
   border-bottom: 1px solid #d4d7de;
   margin-bottom: 20px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .section__panel:last-child {
   border-bottom-color: transparent
+}
+
+.section-header {
+  padding: 20px;
+  background: #3d9bff;
+  color: white;
+}
+
+.section-header h4 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.section-columns {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.column {
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.box {
+  width: 100%;
+  padding: 10px;
+}
+
+.box__content {
+  width: 100%;
+  height: 200px;
+  background: #e4eef1;
 }
