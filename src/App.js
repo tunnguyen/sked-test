@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
 import { DataService } from './service/DataService'
@@ -41,6 +41,15 @@ const Tabs = ({ selectedTab }) => {
 }
 
 function App() {
+  const [style, setStyle] = useState({})
+
+  useEffect(() => {
+    const $headerSection = document.querySelector('.app__header')
+    const headerSectionHeight = $headerSection.clientHeight
+    const style = { height: `calc(100vh - ${ headerSectionHeight }px)` }
+    setStyle(style)
+  }, [])
+
   const defaultTab = localStorage.getItem('selectedTab') || AppTabs.First
 
   const [selectedTab, setSelectedTab] = useState(defaultTab)
@@ -56,7 +65,7 @@ function App() {
         <h1 className="app__title">Skedulo Technical Test</h1>
         <AvailableTabs onSelect={selectTab} selectedTab={selectedTab} />
       </header>
-      <div className={ selectedTab !== AppTabs.Third ? 'app__content' : 'app__content-blank' }>
+      <div className={ selectedTab !== AppTabs.Third ? 'app__content' : 'app__content-blank' } style={ style }>
         <Tabs selectedTab={selectedTab} />
       </div>
     </div>
